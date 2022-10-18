@@ -9,9 +9,11 @@
 <body>
     <h1>Mi Familia</h1>
     {% if lista_familiares %}
+    <ul>
         {% for familiares in lista_familiares %}
-                <li>Nombre: {{familiares.nombre}} {{familiares.apellido}}, Edad: {{familiares.edad}} - fecha de nacimiento {{familiares.DOB}}</li>
+                <li><a href="familiar/{{familiares.id}}"> Nombre: {{familiares.nombre}} {{familiares.apellido}}, Edad: {{familiares.edad}} - fecha de nacimiento {{familiares.DOB}}</a></li>
         {% endfor %}
+    </ul>
     {% else %}
         <p>No hay familiares listados</p>
     {% endif %}

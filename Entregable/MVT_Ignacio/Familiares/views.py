@@ -1,9 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Familiares
 from django.http import HttpResponse
 from datetime import datetime
 
 # Create your views here.
+def index(request):
+    return render(request, 'index.html')
+
+def get_familiar(request, familiar_id):
+    familiar = get_object_or_404(Familiares, pk = familiar_id)
+    return HttpResponse(f'{familiar.nombre} {familiar.apellido}')
+
 def agregar_familiares(request, nombre, apellido, edad, fecha):
     familiar = Familiares(nombre = nombre, apellido = apellido, edad = edad)
     # familiar = Familiares.objects.create(DOB)
