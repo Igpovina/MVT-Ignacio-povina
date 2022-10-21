@@ -7,4 +7,7 @@ class Familiares(models.Model):
     apellido = models.CharField(max_length = 30)
     edad = models.IntegerField()
     # DOB = datetime.date()
-    DOB = models.DateField(null=True)
+    DOB = models.DateField(null=True, blank=True)
+    
+    def __str__(self):
+        return f'{self.nombre} {self.apellido}'

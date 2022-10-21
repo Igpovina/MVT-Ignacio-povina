@@ -13,8 +13,9 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 
 from Familiares.views import agregar_familiares, listar_familiares, get_familiar, index
 # from MVT_Ignacio import Familiares
@@ -22,7 +23,6 @@ from Familiares.views import agregar_familiares, listar_familiares, get_familiar
 urlpatterns = [
     path('', index),
     path('admin/', admin.site.urls),
-    path('agrega-familiar/<nombre>/<apellido>/<edad>/<fecha>', agregar_familiares),
-    path('familiares/', listar_familiares),
-    path('familiares/familiar/<familiar_id>', get_familiar),
+    
+    path('familiares/', include('Familiares.urls')),
 ]

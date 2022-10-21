@@ -26,3 +26,8 @@ def listar_familiares(request):
     lista = Familiares.objects.all()
     
     return render(request, 'familiares.html', {'lista_familiares':lista})
+
+def delete_familiar(request, familiar_id):
+    familiar = get_object_or_404(Familiares, pk = familiar_id)
+    familiar.delete()
+    return HttpResponse('El familiar se borro correctamente')
